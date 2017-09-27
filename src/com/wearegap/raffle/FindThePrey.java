@@ -51,4 +51,8 @@ public class FindThePrey {
         
         return map;
     }
+    
+    private static void findBoxes() {
+        
+    }
 }

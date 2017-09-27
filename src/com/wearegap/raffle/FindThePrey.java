@@ -19,7 +19,7 @@ public class FindThePrey {
         });
     }
     
-    public static List<List<String>> readFile() {
+    private static List<List<String>> readFile() {
         
         final String path = "src/com/wearegap/raffle/res/";
         final String fileName = path + "HoundMaze.txt";

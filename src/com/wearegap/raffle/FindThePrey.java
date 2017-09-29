@@ -1,22 +1,27 @@
 package com.wearegap.raffle;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.File;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class FindThePrey {
+    
+    static List<List<String>> maze = new ArrayList<>();
 
     public static void main(String[] args) {
-        readFile().forEach((intItems) -> {
+        
+        maze = readFile();
+        
+        /* readFile().forEach((intItems) -> {
             System.out.println(String.valueOf(intItems));
-        });
+        }); */
     }
     
     private static List<List<String>> readFile() {
@@ -47,7 +52,9 @@ public class FindThePrey {
             
             br.close();
             
-        } catch (IOException e) { Logger.logMsg(Logger.ERROR, e.toString()); }
+        } catch (IOException e) { 
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Exception", e);
+        }
         
         return map;
     }

@@ -10,24 +10,29 @@ import java.util.logging.Level;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class FindThePrey {
     
-    static List<List<String>> maze = new ArrayList<>();
+    private static final String PATH = "src/com/wearegap/raffle/res/";
+    private static final String FILENAME = PATH + "HoundMaze.txt";
+    
+    static final List<List<String>> MAZE = fillMaze(FILENAME);
 
     public static void main(String[] args) {
         
-        maze = readFile();
+        new FindThePrey();
         
-        /* readFile().forEach((intItems) -> {
-            System.out.println(String.valueOf(intItems));
+        /* fillMaze(FILENAME).forEach((items) -> {
+            System.out.println(String.valueOf(items));
         }); */
     }
     
-    private static List<List<String>> readFile() {
-        
-        final String path = "src/com/wearegap/raffle/res/";
-        final String fileName = path + "HoundMaze.txt";
+    public FindThePrey() {
+        createPath();
+    }
+
+    private static List<List<String>> fillMaze(String fileName) {
         
         List<List<String>> map = new ArrayList<>();
         
@@ -58,8 +63,32 @@ public class FindThePrey {
         
         return map;
     }
-    
-    private static void findBoxes() {
+
+    private Node createPath() {
         
+        Stack stack = new Stack();
+        Node rootNode = new Node();
+        
+        for (int i = 0; i < MAZE.size(); i++) {
+            for (int j = 0; j < MAZE.get(i).size(); j++) {
+                
+                if (MAZE.get(i).get(j).equals("F")) {
+                    /* Node node = new Node();
+                    node.setX(i); node.setY(j);
+                    
+                    if (isThereAdjacents(i, j))
+                        stack.add(node);
+                    
+                    rootNode.addNode(node);*/
+                }
+            }
+        }
+        
+        return rootNode;
+    }
+    
+    private boolean isThereAdjacents(int i, int j) {
+        
+        return false;
     }
 }
